@@ -1,0 +1,31 @@
+version: '3.7'
+
+services:
+  haproxy1:
+    image: ${NAME}-${TAG}
+    restart: always
+    container_name: haproxy1-${TAG}
+    privileged: true
+    ports:
+      - "8081:80"
+    networks:
+      default:
+        aliases:
+         - haproxy1.local
+
+  haproxy2:
+    image: ${NAME}-${TAG}
+    restart: always
+    container_name: haproxy2-${TAG}
+    privileged: true
+    ports:
+      - "8082:80"
+    networks:
+      default:
+        aliases:
+         - haproxy2.local
+
+networks:
+  default:
+    external:
+      name: ${NAME}-${TAG}
