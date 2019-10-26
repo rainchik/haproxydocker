@@ -16,3 +16,8 @@ open webpage:
 haproxy status pages:  
 ```http://yourdomain:8081/haproxy?stats```
 ```http://yourdomain:8082/haproxy?stats```
+
+
+## Please note
+Adding few services in one docker container is not docker best practice way. We should use different containers for each service.  
+More best practice tips could be find here : https://docs.docker.com/develop/develop-images/dockerfile_best-practices/

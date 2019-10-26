@@ -1,8 +1,12 @@
 FROM ubuntu
 # install necessary soft. remove apt cache files to reduce docker image size
-RUN apt update && apt install -y nginx haproxy supervisor && rm -rf /var/lib/apt/lists/*
+RUN apt update \
+ && apt install -y --no-install-recommends \
+    nginx haproxy supervisor \
+ && rm -rf /var/lib/apt/lists/*
 #
-RUN mkdir -p /run/haproxy/ && chown -R haproxy:haproxy /var/lib/haproxy
+RUN mkdir -p /run/haproxy/ \
+ && chown -R haproxy:haproxy /var/lib/haproxy
 
 # copy configs to image
 COPY config/supervisor/supervisord.conf /etc/supervisor/conf.d/
