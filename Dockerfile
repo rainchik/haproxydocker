@@ -12,5 +12,4 @@ COPY config/haproxy/haproxy.cfg /etc/haproxy/
 # copy content to image
 COPY config/content/index.html /var/www/html/
 
-EXPOSE 8080
 CMD ["/usr/bin/supervisord", "-c", "/etc/supervisor/conf.d/supervisord.conf"]
